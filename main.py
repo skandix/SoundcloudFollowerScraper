@@ -11,7 +11,7 @@ os.path.exists("scrape.sh") and os.remove("scrape.sh")
 
 cli_id = "02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea"
 artist = [ ]
-sscrape = "bash soundscrape -f -n 100 "
+sscrape = "soundscrape -f -n 100 "
 
 def get_sc_uid(username):
 	requid = requests.get('http://api.soundcloud.com/resolve.json?url=http://soundcloud.com/%s&client_id=%s' % (username, cli_id), stream=True)

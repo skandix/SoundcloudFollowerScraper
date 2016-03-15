@@ -21,15 +21,17 @@ def get_sc_uid(username):
 	return uinfo[1]
 
 def follower_scrape():
-	url =  'https://api.soundcloud.com/users/%s/followings?client_id=%s&limit=1000' % (get_sc_uid("bendyr"), cli_id)
+	url =  'https://api.soundcloud.com/users/%s/followings?client_id=%s&limit=1000&offset=0' % (get_sc_uid("snbrn"), cli_id)
 	spoon = urllib.urlopen(url)
 	frozen = jsonpickle.encode(spoon)
+	#print frozen
 
-	find_username = re.compile(ur'"username\\":\\"[a-zA-Z0-9 ]{3,}')
+
+	find_username = re.compile(ur'"permalink\\":\\"[a-zA-Z0-9 ]{3,15}')
 	regex_magic = re.findall(find_username, frozen)
 	
 	for i in regex_magic:
-		artist.append(i.replace('"', "").replace('username', "").replace('\:', "").replace('\\', ""))
+		artist.append(i.replace('"', "").replace('permalink', "").replace('\:', "").replace('\\', ""))
 	
 	pprint(artist)
 	print "Count:", len(artist)

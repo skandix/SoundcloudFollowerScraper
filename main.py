@@ -21,7 +21,7 @@ def get_sc_uid(username):
 	return uinfo[1]
 
 def follower_scrape():
-	url =  'https://api.soundcloud.com/users/%s/followings?client_id=%s&limit=1000' % (get_sc_uid("aulonmujaj"), cli_id)
+	url =  'https://api.soundcloud.com/users/%s/followings?client_id=%s&limit=1000' % (get_sc_uid("bendyr"), cli_id)
 	spoon = urllib.urlopen(url)
 	frozen = jsonpickle.encode(spoon)
 

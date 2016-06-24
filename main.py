@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# old shit, haven't had time to clean up this shit, will do when i have the time ... such spaghetti
 from pprint import pprint
 import jsonpickle
 import requests

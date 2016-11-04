@@ -4,13 +4,13 @@ import requests
 import os
 
 osEnd = ""
-xTracks = 25
+xTracks = 50
 
 os.path.exists("scrape"+osEnd) and os.remove("scrape"+osEnd)
 
 cli_id = "02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea"
 artist = [ ]
-sscrape = "soundscrape -f -n "+str(xTracks)
+sscrape = "soundscrape -f -n " + str(xTracks)
 
 def get_sc_uid(username):
 	requid = requests.get('http://api.soundcloud.com/resolve.json?url=http://soundcloud.com/{:s}&client_id={:s}'.format(username, cli_id)).json()
@@ -30,10 +30,9 @@ def soundscrape_generate():
 	file = open('scrape'+osEnd, "w+")
 	
 	for j in artist:
-		dmp = sscrape + j
+		dmp = sscrape +" "+ j
 		file.write(dmp)
 		file.write("\n")
-
 
 if _os == "linux" or _os == "linux2" or _os == "cygwin" or _os == "darwin":
 		osEnd = ".sh"

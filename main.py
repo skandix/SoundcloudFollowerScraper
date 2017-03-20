@@ -25,7 +25,7 @@ def follower_scrape(cli_id):
             artist.append(j['permalink'])
 
     except ValueError as valerr:
-        if cli_id == "" or cli_id != "":
+        if not cli_id:
             print ("Error: API Key is missing/wrong")
             sys.exit(1)
 

@@ -8,10 +8,9 @@ import re
 
 # global vars
 osEnd = ""
-xTracks = 50
 os.path.exists("scrape"+osEnd) and os.remove("scrape"+osEnd)
 artist = [ ]
-sscrape = "soundscrape -f -n " + str(xTracks)
+sscrape = "soundscrape -f -n 50"
 
 
 def get_sc_uid(username):
@@ -32,6 +31,9 @@ def follower_scrape(cli_id):
         else:
             print ("Error: {:} \n ").format(valerr)
             sys.exit(1)
+    
+    except TypeError as e:
+        return # fix this later, now it's time to sleep again..
 
     print (artist)
     print (len(artist))
@@ -50,8 +52,8 @@ elif _os == "win32":
     osEnd = ".bat"
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--username")
-parser.add_argument("--api")
+parser.add_argument("--username", type=str)
+parser.add_argument("--api", type=str)
 args = parser.parse_args()
 
 follower_scrape(args.api)

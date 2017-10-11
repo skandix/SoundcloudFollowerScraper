@@ -8,10 +8,10 @@ import re
 
 # global vars
 osEnd = ""
+nSongs = 50
 os.path.exists("scrape"+osEnd) and os.remove("scrape"+osEnd)
 artist = [ ]
-sscrape = "soundscrape -f -n 50"
-
+sscrape = "soundscrape -d -f -n {:}".format(nSongs)
 
 def get_sc_uid(username):
     scrapeid = requests.get("https://soundcloud.com/"+username).text

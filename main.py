@@ -8,7 +8,7 @@ import re
 
 # global vars
 osEnd = ""
-nSongs = 50
+nSongs = args.nsongs
 os.path.exists("scrape"+osEnd) and os.remove("scrape"+osEnd)
 artist = [ ]
 sscrape = "soundscrape -d -f -n {:}".format(nSongs)
@@ -54,6 +54,7 @@ elif _os == "win32":
 parser = argparse.ArgumentParser()
 parser.add_argument("--username", type=str)
 parser.add_argument("--api", type=str)
+parser.add_argument("--nsongs", type=int)
 args = parser.parse_args()
 
 follower_scrape(args.api)

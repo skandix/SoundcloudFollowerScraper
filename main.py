@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#/usr/bin/python
 from sys import platform as _os
 import argparse
 import requests
@@ -6,9 +6,16 @@ import sys
 import os
 import re
 
+# parse arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("--username", type=str)
+parser.add_argument("--api", type=str)
+parser.add_argument("--nsongs", type=int)
+args = parser.parse_args()
+
 # global vars
-osEnd = ""
 nSongs = args.nsongs
+osEnd = ""
 os.path.exists("scrape"+osEnd) and os.remove("scrape"+osEnd)
 artist = [ ]
 sscrape = "soundscrape -d -f -n {:}".format(nSongs)
@@ -50,12 +57,6 @@ if _os == "linux" or _os == "linux2" or _os == "cygwin" or _os == "darwin":
 
 elif _os == "win32":
     osEnd = ".bat"
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--username", type=str)
-parser.add_argument("--api", type=str)
-parser.add_argument("--nsongs", type=int)
-args = parser.parse_args()
 
 follower_scrape(args.api)
 soundscrape_generate()

@@ -18,7 +18,7 @@ nSongs = args.nsongs
 osEnd = ""
 os.path.exists("scrape"+osEnd) and os.remove("scrape"+osEnd)
 artist = [ ]
-sscrape = "soundscrape -d -f -n {:}".format(nSongs)
+sscrape = "soundscrape -f -n {:}".format(nSongs)
 
 def get_sc_uid(username):
     scrapeid = requests.get("https://soundcloud.com/"+username).text
